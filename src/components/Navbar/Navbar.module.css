@@ -1,0 +1,198 @@
+.navbar {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 1000;
+}
+
+.navContainer {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-radius: 16px;
+  background: var(--bg);
+  border: 1px solid var(--card-border);
+
+  transition: background 0.3s ease, border 0.3s ease;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* ================= UIVERSE THEME TOGGLE ================= */
+
+.theme {
+  display: flex;
+  align-items: center;
+}
+
+.theme__toggleWrap {
+  position: relative;
+}
+
+.theme__toggle {
+  appearance: none;
+  width: 56px;
+  height: 28px;
+  margin-top: 7px;
+  margin-left: -65px;
+  border-radius: 999px;
+  background: hsl(48, 90%, 85%);
+  padding: 3px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.theme__toggle::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: hsl(48, 90%, 55%);
+  border-radius: 50%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.theme__toggle:checked {
+  background: hsl(198, 90%, 15%);
+}
+
+.theme__toggle:checked::before {
+  transform: translateX(28px);
+  background: hsl(198, 90%, 55%);
+}
+
+.theme__icon {
+  position: absolute;
+  top: -22px;
+  left: 16px;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  display: none;
+}
+
+.theme__iconPart {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0.3em -0.3em 0 0.4em white inset;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: none;
+}
+
+.theme__toggle:checked ~ .theme__icon .theme__iconPart {
+  transform: scale(0.6);
+  opacity: 0.6;
+}
+
+/* ================= HAMBURGER ================= */
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ================= DROPDOWN ================= */
+
+.dropdown {
+  position: absolute;
+  top: 58px;
+  right: 0;
+
+  min-width: 160px;
+  padding: 1.4rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  align-items: center;
+
+  background: var(--navbar-solid);
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown a {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  position: relative;
+}
+
+.dropdown a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: var(--text-primary);
+  left: 0;
+  bottom: -4px;
+  transition: width 0.2s ease;
+}
+
+.dropdown a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* 🔑 THIS was missing */
+  .navbar {
+    background-color: var(--background);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .navContainer {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+  }
+
+  .dropdown {
+    background: var(--card-bg);
+    border-radius: 14px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+

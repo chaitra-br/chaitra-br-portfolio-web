@@ -1,0 +1,87 @@
+.projects {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  background: var(--background);
+  padding: 6rem 7rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* When section enters viewport */
+.inView {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heading {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 2rem;
+  transition: all 0.5s ease;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects {
+    padding: 6rem 2rem;
+  }
+}
+
+/* TOGGLE BUTTON */
+.toggleBtn {
+  margin: 3rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+
+  background: var(--button-bg);
+  border: 1px solid var(--card-border);
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--button-text);
+
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.toggleBtn:hover {
+  background: var(--button-bg-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.toggleBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
