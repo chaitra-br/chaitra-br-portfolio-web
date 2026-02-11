@@ -10,18 +10,8 @@ export const projectsData = [
     live: "https://job-application-tracker-v.vercel.app",
     github: "https://github.com/chaitra-br/job-application-tracker-v",
   },
-  /*{
-    id: 2,
-    title: "SaaS Admin Analytics Dashboard",
-    description:
-      "A data-driven admin dashboard designed to visualize key metrics, trends, and performance insights with an enterprise-style UI.",
-    image: "/projects/admin-analytics.png",
-    tools: ["React.js", "Data Visualization", "Dashboard UI Design"],
-    live: "https://job-tracker.vercel.app",
-    github: "https://github.com/chaitra-br",
-  },*/
   {
-    id: 3,
+    id: 2,
     title: "StyleHub E-Commerce",
     description:
       "A production-ready e-commerce interface featuring product discovery, filtering, cart flows, and a polished checkout experience.",
@@ -30,6 +20,18 @@ export const projectsData = [
     live: "https://job-tracker.vercel.app",
     github: "https://github.com/chaitra-br",
   },
+  {
+    id: 3,
+    title: "2048 Game",
+    description:
+      "An interactive grid-based puzzle game implementing slide and merge mechanics, real-time score updates, and custom animation effects using pure JavaScript and CSS.",
+    image: "/2048-game.png",
+    tools: ["HTML5", "CSS3 (Animations)", "JavaScript (ES6)", "DOM Manipulation", "Game Logic Implementation"],
+    live: "https://2048-game-nine-snowy.vercel.app/",
+    github: "https://github.com/chaitra-br/2048-game",
+  },
+
+
   /*{
     id: 4,
     title: "Advanced Data Table Management System",

@@ -2,44 +2,24 @@
 
 import styles from "./Skills.module.css";
 import { useInView } from "@/hooks/useInView";
-import { FaPenNib } from "react-icons/fa";
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaGitAlt,
-  FaGithub,
-  FaFigma,
-  FaLayerGroup,
-} from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiTailwindcss,
-  SiFramer,
-  SiCssmodules,
-  SiVercel,
-  SiNetlify,
-} from "react-icons/si";
 
-const skills = [
-  { name: "HTML", icon: <FaHtml5 />, className: "tileWide" },
-  { name: "CSS", icon: <FaCss3Alt />, className: "tileSmall" },
-  { name: "JavaScript", icon: <FaJs />, className: "tileSmall" },
-  { name: "React", icon: <FaReact />, className: "tileTall" },
-  { name: "Next.js", icon: <SiNextdotjs />, className: "tileSmall" },
-  { name: "CSS Modules", icon: <SiCssmodules />, className: "tileSmall" },
-  { name: "Tailwind CSS", icon: <SiTailwindcss />, className: "tileSmall" },
-  { name: "Responsive Design", icon: <FaCss3Alt />, className: "tileSmall" },
-  { name: "GitHub", icon: <FaGithub />, className: "tileTall" },
-  { name: "Git", icon: <FaGitAlt />, className: "tileSmall" },
-  { name: "Framer", icon: <SiFramer />, className: "tileSmall" },
-  { name: "Figma", icon: <FaFigma />, className: "tileWide" },
-  { name: "Vercel", icon: <SiVercel />, className: "tileSmall" },
-  { name: "Netlify", icon: <SiNetlify />, className: "tileSmall" },
-  { name: "UI/UX Design", icon: <FaPenNib />, className: "tileSmall" },
-  { name: "Reusable UI Components", icon: <FaLayerGroup />, className: "tileSmall" },
-
+const skillCategories = [
+  {
+    title: "Frontend",
+    skills: ["HTML", "CSS", "JavaScript", "React", "Next.js"],
+  },
+  {
+    title: "Styling",
+    skills: ["Tailwind CSS", "CSS Modules", "Responsive Design"],
+  },
+  {
+    title: "Tools",
+    skills: ["Git", "GitHub", "Vercel"],
+  },
+  {
+    title: "Design",
+    skills: ["Figma", "Framer", "UI/UX Design", "Reusable UI Components"],
+  },
 ];
 
 const Skills = () => {
@@ -51,18 +31,24 @@ const Skills = () => {
       id="skills"
       className={`${styles.skillsSection} ${inView ? styles.inView : ""}`}
     >
-      
       <h2 className={styles.heading}>Skills</h2>
 
-      <div className={styles.grid}>
-        {skills.map((skill, i) => (
+      <div className={styles.categories}>
+        {skillCategories.map((category, index) => (
           <div
-            key={skill.name}
-            className={`${styles.tile} ${styles[skill.className]}`}
-            style={{ transitionDelay: `${i * 0.06}s` }}
+            key={category.title}
+            className={styles.categoryCard}
+            style={{ transitionDelay: `${index * 0.1}s` }}
           >
-            <div className={styles.icon}>{skill.icon}</div>
-            <span className={styles.label}>{skill.name}</span>
+            <h3 className={styles.categoryTitle}>{category.title}</h3>
+
+            <div className={styles.skillsWrapper}>
+              {category.skills.map((skill) => (
+                <span key={skill} className={styles.skillItem}>
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
