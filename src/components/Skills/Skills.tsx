@@ -18,7 +18,7 @@ const skillCategories = [
   },
   {
     title: "Design",
-    skills: ["Figma", "Framer", "UI/UX Design", "Reusable UI Components"],
+    skills: ["Figma", "Framer", "Reusable UI Components"],
   },
 ];
 
@@ -31,7 +31,9 @@ const Skills = () => {
       id="skills"
       className={`${styles.skillsSection} ${inView ? styles.inView : ""}`}
     >
-      <h2 className={styles.heading}>Skills</h2>
+      <h2 className={`${styles.heading} ${inView ? styles.show : ""}`}>
+          My <span className={styles.highlight}>Skills</span>
+      </h2>
 
       <div className={styles.categories}>
         {skillCategories.map((category, index) => (

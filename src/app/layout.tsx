@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import BackToTop from "../components/BackToTop/BackToTop";
 
 export const metadata = {
-  title: "Chaitra | Portfolio",
+  title: "B R Chaitra | Frontend Developer",
   description: "Frontend & Data Analytics Portfolio",
 };
 

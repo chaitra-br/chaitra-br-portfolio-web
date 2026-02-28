@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import styles from "./Landing.module.css";
+import { FaGithub, FaLinkedinIn, FaEnvelope } from "react-icons/fa";
 
 export default function Landing() {
   const fullText = "I’m Chaitra";
   const [text, setText] = useState("");
 
-  // Typewriter effect (runs once per refresh)
   useEffect(() => {
     let index = 0;
     const interval = setInterval(() => {
@@ -23,22 +23,24 @@ export default function Landing() {
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.container}>
-        {/* LEFT CONTENT */}
         <motion.div
-          className={styles.left}
+          className={styles.content}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className={styles.hi}>Hi</h1>
+          <p className={styles.welcome}>WELCOME TO MY PORTFOLIO</p>
 
-          <h2 className={styles.name}>
-            {text}
+          <h1 className={styles.heading}>
+            Hi, <span className={styles.name}>{text}</span>
             <span className={styles.cursor}>|</span>
-          </h2>
+          </h1>
 
-          <p className={styles.subtitle}>
-            Frontend Developer 
+          <h2 className={styles.role}>Frontend Developer</h2>
+
+          <p className={styles.description}>
+            Crafting clean, responsive and modern web experiences using React,
+            JavaScript and UI best practices.
           </p>
 
           <div className={styles.buttons}>
@@ -50,25 +52,39 @@ export default function Landing() {
               Download Resume
             </a>
 
-            <a href="#contact" 
-            className={`${styles.btn} ${styles.secondaryBtn}`}>
+            <a
+              href="#contact"
+              className={`${styles.btn} ${styles.secondaryBtn}`}
+            >
               Contact Me
             </a>
           </div>
-        </motion.div>
 
-        {/* RIGHT IMAGE */}
-        <motion.div
-          className={styles.right}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className={styles.imageWrapper}>
-            <img
-              src="/Profile.jpg"   /* <-- put your image in public folder */
-              alt="B R Chaitra"
-            />
+          <div className={styles.socials}>
+            <a
+              href="https://github.com/chaitra-br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
+              <FaGithub />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/br-chaitra/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialIcon}
+            >
+              <FaLinkedinIn />
+            </a>
+
+            <a
+              href="mailto:chaitrabr03@gmail.com"
+              className={styles.socialIcon}
+            >
+              <FaEnvelope />
+            </a>
           </div>
         </motion.div>
       </div>

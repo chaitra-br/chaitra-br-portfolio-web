@@ -1,4 +1,5 @@
 import styles from "./ProjectCard.module.css";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 export default function ProjectCard({ project }: any) {
   return (
@@ -18,11 +19,11 @@ export default function ProjectCard({ project }: any) {
         </div>
 
         <div className={styles.links}>
-          <a href={project.live} target="_blank" rel="noopener noreferrer">
-            View Project →
+          <a href={project.live} target="_blank" rel="noopener noreferrer" >
+            <FaExternalLinkAlt />
           </a>
-          <a href={project.github} target="_blank" rel="noopener noreferrer">
-            View Code →
+          <a href={project.github} target="_blank" rel="noopener noreferrer" >
+            <FaGithub />
           </a>
         </div>
       </div>

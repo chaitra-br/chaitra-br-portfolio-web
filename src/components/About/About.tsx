@@ -12,29 +12,39 @@ const About = () => {
       id="about"
       className={`${styles.aboutSection} ${inView ? styles.inView : ""}`}
     >
+      <div className={styles.container}>
+        {/* HEADING */}
+        <h2 className={`${styles.heading} ${inView ? styles.show : ""}`}>
+          About <span className={styles.highlight}>Me</span>
+        </h2>
 
-      <div className={styles.content}>
-        <h2 className={styles.heading}>About Me</h2>
+        {/* IMAGE */}
+        <div className={`${styles.right} ${inView ? styles.showImage : ""}`}>
+          <div className={styles.imageWrapper}>
+            <img src="/ProfilePicViolet.png" alt="Chaitra" />
+          </div>
+        </div>
 
-        <p className={styles.text} style={{ transitionDelay: "0.1s" }}>
-          I’m a frontend developer who enjoys building clean, intuitive, and scalable 
-          user interfaces with a strong focus on usability and thoughtful design. I care 
-          deeply about how users interact with applications and aim to create experiences 
-          that feel simple, responsive, and purposeful rather than visually overwhelming.
-        </p>
+        {/* TEXT */}
+        <div className={styles.textContent}>
+          <p className={`${styles.text} ${inView ? styles.show : ""}`} style={{ transitionDelay: "0.2s" }}>
+            I’m a frontend developer who enjoys building clean, intuitive, and scalable user interfaces 
+            with a strong focus on usability and thoughtful design. I aim to create experiences that feel 
+            simple, responsive, and purposeful rather than visually overwhelming.
+          </p>
 
-        <p className={styles.text} style={{ transitionDelay: "0.25s" }}>
-          Through hands-on projects, I’ve worked on building complete frontend applications, 
-          dashboards, and data-driven interfaces that emphasize component reusability, clear 
-          state management, and performance. I enjoy translating complex requirements into 
-          structured UI patterns and designing interfaces that remain maintainable as features grow.
-        </p>
+          <p className={`${styles.text} ${inView ? styles.show : ""}`} style={{ transitionDelay: "0.35s" }}>
+            Through hands-on projects, I’ve built complete frontend applications, dashboards, and 
+            data-driven interfaces with emphasis on component reusability, clear state management, 
+            and performance. I enjoy turning complex requirements into structured, maintainable UI systems.
+          </p>
 
-        <p className={styles.text} style={{ transitionDelay: "0.4s" }}>
-          I’m particularly interested in modern frontend development, where clean design meets 
-          real-world functionality. I focus on continuously improving my skills, refining my 
-          approach through projects, and building user-centric interfaces with care and consistency.
-        </p>
+          <p className={`${styles.text} ${inView ? styles.show : ""}`} style={{ transitionDelay: "0.5s" }}>
+            I’m particularly interested in modern frontend development where clean design meets real-world 
+            functionality. I continuously refine my skills and focus on building user-centric interfaces 
+            with clarity and consistency.
+          </p>
+        </div>
       </div>
     </section>
   );

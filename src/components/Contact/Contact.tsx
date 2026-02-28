@@ -1,9 +1,16 @@
+"use client";
+
 import styles from "./Contact.module.css";
+import { useInView } from "../../hooks/useInView";
 
 export default function Contact() {
+  const { ref, inView } = useInView(0.25);
+
   return (
     <section id="contact" className={styles.contact}>
-      <h2 className={styles.heading}>Get in Touch</h2>
+      <h2 className={`${styles.heading} ${inView ? styles.show : ""}`}>
+          Get in <span className={styles.highlight}>Touch</span>
+      </h2>
 
       <p className={styles.subtext}>
         📍  Based in Bengaluru

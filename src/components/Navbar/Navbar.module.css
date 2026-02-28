@@ -1,33 +1,73 @@
+/* ===== NAVBAR WRAPPER ===== */
 .navbar {
   position: fixed;
-  top: 16px;
-  left: 16px;
-  right: 16px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
+
+  backdrop-filter: blur(18px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--card-border);
 }
 
+[data-theme="dark"] .navbar {
+  background: rgba(10, 15, 25, 0.55);
+}
+
+/* ===== CONTAINER ===== */
 .navContainer {
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
-  height: 60px;
+  height: 70px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  border-radius: 16px;
-  background: var(--bg);
-  border: 1px solid var(--card-border);
-
-  transition: background 0.3s ease, border 0.3s ease;
 }
 
+/* ===== LOGO ===== */
 .logo {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
+/* ===== DESKTOP MENU ===== */
+.desktopMenu {
+  display: flex;
+  gap: 2rem;
+}
+
+.desktopMenu a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.desktopMenu a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #7c3aed;
+  left: 0;
+  bottom: -6px;
+  transition: width 0.3s ease;
+}
+
+.desktopMenu a:hover {
+  color: #7c3aed;
+}
+
+.desktopMenu a:hover::after {
+  width: 100%;
+}
+
+/* ===== RIGHT SIDE ===== */
 .rightSection {
   display: flex;
   align-items: center;
@@ -35,164 +75,158 @@
   position: relative;
 }
 
-/* ================= UIVERSE THEME TOGGLE ================= */
+/* ===== SUN MOON TOGGLE (Type-Delta) ===== */
 
-.theme {
+.themeToggle {
+  color: #7c3aed;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.sunMoonToggle {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.theme__toggleWrap {
-  position: relative;
-}
-
-.theme__toggle {
-  appearance: none;
-  width: 56px;
-  height: 28px;
-  margin-top: 7px;
-  margin-left: -65px;
-  border-radius: 999px;
-  background: hsl(48, 90%, 85%);
-  padding: 3px;
+.themeToggleInput {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.theme__toggle::before {
-  content: "";
-  width: 22px;
-  height: 22px;
-  background: hsl(48, 90%, 55%);
-  border-radius: 50%;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.theme__toggle:checked {
-  background: hsl(198, 90%, 15%);
-}
-
-.theme__toggle:checked::before {
-  transform: translateX(28px);
-  background: hsl(198, 90%, 55%);
-}
-
-.theme__icon {
   position: absolute;
-  top: -22px;
-  left: 16px;
-  width: 18px;
-  height: 18px;
-  pointer-events: none;
-  display: none;
 }
 
-.theme__iconPart {
+/* SVG base */
+.themeToggle svg {
   position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  box-shadow: 0.3em -0.3em 0 0.4em white inset;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  display: none;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+  transform: rotate(40deg);
 }
 
-.theme__toggle:checked ~ .theme__icon .theme__iconPart {
-  transform: scale(0.6);
-  opacity: 0.6;
+/* Main circle */
+.sunMoon {
+  transform-origin: center;
+  transition: inherit;
+  transform: scale(1);
 }
 
-/* ================= HAMBURGER ================= */
+/* Sun rays */
+.sunRay {
+  transform-origin: center;
+  transform: scale(0);
+}
+
+/* Mask animation */
+.themeToggle svg mask > circle {
+  transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+  transform: translate(0px, 0px);
+}
+
+/* Checked state animations */
+.themeToggleInput:checked + svg {
+  transform: rotate(90deg);
+}
+
+.themeToggleInput:checked + svg mask > circle {
+  transform: translate(16px, -3px);
+}
+
+.themeToggleInput:checked + svg .sunMoon {
+  transform: scale(0.55);
+}
+
+.themeToggleInput:checked + svg .sunRay {
+  animation: showRay 0.4s ease forwards;
+}
+
+@keyframes showRay {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Hover effect */
+.themeToggle:hover svg {
+  transform: rotate(50deg);
+}
+
+/* ===== HAMBURGER ===== */
 
 .hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 6px;
+  width: 28px;
+  height: 24px;
+  margin-left: 4px;
   cursor: pointer;
+  position: relative;
 }
 
 .hamburger span {
-  width: 26px;
+  width: 100%;
   height: 2px;
   background: var(--text-primary);
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
-.hamburger.open span:nth-child(1) {
+/* When open */
+.open span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
 
-.hamburger.open span:nth-child(2) {
+.open span:nth-child(2) {
   opacity: 0;
+  transform: scale(0);
 }
 
-.hamburger.open span:nth-child(3) {
+.open span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* ================= DROPDOWN ================= */
+/* Mobile only */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
 
+  .desktopMenu {
+    display: none;
+  }
+}
+
+/* ===== DROPDOWN ===== */
 .dropdown {
   position: absolute;
-  top: 58px;
+  top: 60px;
   right: 0;
-
-  min-width: 160px;
-  padding: 1.4rem 1.5rem;
-
+  padding: 1.2rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
-  align-items: center;
-
-  background: var(--navbar-solid);
-  border-radius: 14px;
-  border: 1px solid var(--card-border);
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  gap: 1rem;
 }
 
-.dropdown a {
-  font-size: 1.05rem;
-  color: var(--text-primary);
-  position: relative;
-}
-
-.dropdown a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background: var(--text-primary);
-  left: 0;
-  bottom: -4px;
-  transition: width 0.2s ease;
-}
-
-.dropdown a:hover::after {
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  /* 🔑 THIS was missing */
-  .navbar {
-    background-color: var(--background);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+/* ===== MOBILE ===== */
+@media (max-width: 900px) {
+  .desktopMenu {
+    display: none;
   }
 
-  .navContainer {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-  }
-
-  .dropdown {
-    background: var(--card-bg);
-    border-radius: 14px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  .hamburger {
+    display: flex;
   }
 }
-
-

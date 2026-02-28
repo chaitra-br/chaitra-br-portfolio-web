@@ -6,8 +6,12 @@
 
 .heading {
   font-size: 2.4rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #7c3aed;
 }
 
 .subtext {
@@ -21,6 +25,7 @@
   width: fit-content;
   margin: 0 auto;
   background: var(--card-bg);
+  border: 1px solid var(--card-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,6 +33,12 @@
   gap: 24px;
   border-radius: 18px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.socialCard:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 6px 10px #7c3aed;
+  transform: translateY(-4px);
 }
 
 /* BASE CONTAINER */
@@ -45,7 +56,7 @@
 
 /* HOVER COLORS */
 .containerEmail:hover {
-  background-color: #ba5526ff; /* neutral */
+  background-color: #ff4040; 
 }
 
 .containerGithub:hover {
@@ -95,7 +106,7 @@
 @media (max-width: 600px) {
   .socialCard {
     gap: 16px;
-    padding: 18px 20px;
+    padding: 28px 24px;
   }
 
   .heading {

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import styles from "./Experience.module.css";
+import { useInView } from "../../hooks/useInView";
 
 const experiences = [
 {
@@ -39,6 +40,8 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const { ref, inView } = useInView(0.25);
+  
   const sectionRef = useRef<HTMLElement | null>(null);
 
   /* Fade in on scroll */
@@ -62,7 +65,9 @@ export default function Experience() {
 
   return (
     <section ref={sectionRef} className={styles.experience} id="experience">
-      <h2 className={styles.heading}>Experience</h2>
+      <h2 className={`${styles.heading} ${inView ? styles.show : ""}`}>
+          My <span className={styles.highlight}>Experience</span>
+      </h2>
 
       <div className={styles.timeline}>
         {experiences.map((exp, index) => {
