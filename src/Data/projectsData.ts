@@ -7,8 +7,8 @@ export const projectsData = [
       "A production-ready e-commerce interface featuring product discovery, filtering, cart flows, and a polished checkout experience.",
     image: "/stylehub-ecommerce.png",
     tools: ["React.js", "CSS Modules", "UI State & Component Architecture"],
-    live: "https://job-tracker.vercel.app",
-    github: "https://github.com/chaitra-br",
+    live: "https://stylehub-ecommerce-vercel.vercel.app/",
+    github: "https://github.com/chaitra-br/stylehub-ecommerce-vercel",
   },
   {
     id: 2,
